@@ -250,8 +250,30 @@ class service_test(unittest.TestCase):
             pass
         except Exception as ex:
             print(f"{ex}")
-            
-        
+
+    def test_check_observer_nomenclature_deleted(self):
+
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.nomenclature_key()
+        nomenclature_data = start.storage.data[key]
+        service = reference_service(nomenclature_data)
+
+        if len(nomenclature_data) == 0:
+            raise operation_exception("-")
+
+        item = nomenclature_data[0]
+
+        service.delete(item)
+        try:
+            storage_observer.raise_event(event_type.nomenclature_deleted())
+
+            pass
+        except Exception as ex:
+            print(f"{ex}")
+
+
              
             
         
