@@ -11,6 +11,7 @@ from Src.Models.storage_model import storage_model
 from Src.settings import settings
 from Src.Storage.storage import storage
 from Src.exceptions import exception_proxy, operation_exception, argument_exception
+from Src.Logics.Services.post_processing_service import post_processing_service
 
 #
 # Класс для обработки данных. Начало работы приложения
@@ -40,6 +41,7 @@ class start_factory:
             self.__storage = storage()
             
         self.__storage.data[ key ] = items
+
         
     @property            
     def storage(self):
