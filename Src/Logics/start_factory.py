@@ -17,6 +17,7 @@ from Src.Logics.Services.post_processing_service import post_processing_service
 # Класс для обработки данных. Начало работы приложения
 #
 class start_factory:
+    __observer: post_processing_service = None
     __oprions: settings = None
     __storage: storage = None
     
